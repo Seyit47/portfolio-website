@@ -1,0 +1,63 @@
+---
+title: SDD Navigator Dashboard
+year: 2026
+type: Dashboard
+summary: Specification-driven development dashboard showing which requirements are implemented, tested or unaddressed, with shareable filtered views.
+role: Front-end developer
+period: "2026"
+problem: |
+  Teams practising specification-driven development could query a coverage API but had no
+  place to see, at a glance, which requirements were implemented, tested or still orphaned, and
+  no way to share a filtered view with a colleague.
+solution: |
+  A Next.js dashboard over the SDD Navigator API with a summary of coverage, a searchable,
+  filterable and sortable requirements table whose state lives in the URL, requirement detail
+  pages with linked code annotations, and task and orphan views.
+highlights:
+  - Coverage summary with counts by requirement type and status, orphan counts and last scan time.
+  - Requirements table with segmented filters and sorting persisted in the URL so views can be shared.
+  - Requirement detail with coverage assessment, linked @req annotations with code snippets and tasks.
+  - Light and dark themes that follow the OS on first visit and remember the toggle choice.
+  - Mock mode with JSON fixtures shaped exactly like the API, so the UI runs without credentials.
+outcome: |
+  A live, shareable picture of specification coverage that works in mock mode for demos and in
+  API mode for real projects; the server, not the browser, talks to the API so credentials stay
+  private.
+metrics:
+  - label: Data modes
+    value: Mock + live API
+  - label: Themes
+    value: Light & dark
+tags: [dashboard, tooling, performance]
+featured: true
+order: 2
+links:
+  live: https://sdd-navigator-dashboard-theta.vercel.app
+  source: https://github.com/Seyit47/sdd-navigator-dashboard
+visuals: []
+published: true
+---
+
+## Context
+
+Specification-driven development only pays off when everyone can see the gap between what was
+specified and what was built. The API existed; the view did not.
+
+## What I built
+
+A Next.js App Router dashboard with four areas: Summary, Requirements, Requirement detail, and
+Tasks & orphans. Filters and sort are query parameters, so a URL is a saved view.
+
+## Decisions
+
+- The Next.js server calls the API; the browser only talks to the dashboard. API requests never
+  appear in the browser's network tab and credentials never leave the server.
+- The API accepts one value per filter parameter, so multi-select sends one request per value
+  and merges results; selecting every value sends none.
+- Search is applied in the browser because the API has no search parameter.
+- Mock mode is the default for development, with fixtures shaped exactly like API responses.
+
+## Result
+
+A dashboard that can be demoed in seconds and pointed at a real project by setting one
+environment variable, with Vitest unit tests, Husky and commitlint in the workflow.

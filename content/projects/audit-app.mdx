@@ -1,0 +1,67 @@
+---
+title: Audit App
+year: 2026
+type: Full-stack platform
+summary: Retail-execution platform where field agents log GPS-checked photo audits on daily routes while admins track them live and export reports.
+role: Full-stack developer (solo)
+period: "2026"
+problem: |
+  A distribution company needed proof that its field agents actually visited each shop on
+  their route, with photos, comments and violations recorded on the spot, and an admin team
+  that could watch progress live and export reports without chasing people on messaging apps.
+solution: |
+  A monorepo with a Fastify + Prisma (PostgreSQL) API, a Next.js admin web app and a Flutter
+  mobile app for agent and admin roles. Every screen was built pixel-perfect from a single Figma
+  source, with a documented "Figma gap protocol" for anything the designs did not define.
+highlights:
+  - GPS-checked in-app photos with comment and optional violation per shop visit.
+  - Live agent map for admins, plus shop, agent and product management and report export.
+  - Specification-driven build with a project constitution and per-feature specs, plans and tasks.
+  - S3-compatible media storage (SeaweedFS) and PostgreSQL 16 via docker compose for local parity.
+  - Render and Vercel deployment with environment templates for API and admin web.
+outcome: |
+  Shipped a working three-app platform from a single design source, with the whole delivery
+  process (specs, contracts, tasks) checked into the repository so the next feature starts from
+  documented decisions rather than memory.
+metrics:
+  - label: Apps
+    value: "3"
+  - label: Design source
+    value: 1 Figma file
+tags: [full-stack, mobile, dashboard, design-to-code]
+featured: true
+order: 1
+links:
+  live: https://audit-app-steel.vercel.app
+  source: https://github.com/Seyit47/audit-app
+visuals: []
+published: true
+---
+
+## Context
+
+Field agents visit dozens of shops a day. Managers had no reliable evidence that visits
+happened, and reporting was assembled by hand from chat messages. The brief was a system that
+makes each visit verifiable and gives admins a live picture without extra process.
+
+## What I built
+
+- **API** (`apps/api`): Fastify in TypeScript with Prisma on PostgreSQL, JWT auth, S3-compatible
+  photo storage and typed route contracts.
+- **Admin web** (`apps/admin-web`): Next.js App Router with a live agent map, shop, agent and
+  product management, photo review and report export.
+- **Mobile** (`apps/mobile`): Flutter app with agent and admin roles, daily routes and a
+  GPS-checked camera flow.
+
+## Decisions
+
+- One Figma file is the only design source; anything it does not define follows a written gap
+  protocol: detect, propose options, product owner decides, record.
+- Specification-driven development: a constitution, then spec, plan and tasks per feature, so
+  reviews check compliance instead of taste.
+- Docker compose for PostgreSQL and SeaweedFS so local development matches production storage.
+
+## Result
+
+A complete, verifiable audit trail per visit and a live operational view for managers, built
+by one developer across three apps.

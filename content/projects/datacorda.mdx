@@ -1,0 +1,60 @@
+---
+title: Datacorda Dashboard & Website
+year: 2023
+type: SaaS dashboard & marketing site
+summary: Multi-tenant analytics dashboard and public website for a US startup, server-rendered with cloud media storage and automated deployments.
+role: Frontend Developer
+period: Jun 2023 - Oct 2023
+employer: datacorda
+problem: |
+  A US analytics startup needed a multi-tenant dashboard for its customers and a public website,
+  both maintainable by a small team, with media uploads, reliable deployments and a custom
+  domain setup.
+solution: |
+  Two Nuxt 3 applications sharing conventions: a Vue 3 component library for the dashboard,
+  AWS S3 integration for media upload and asset storage, Amplify for CI/CD and hosting, and
+  Axios modules connecting to APIs deployed on EC2.
+highlights:
+  - Built and maintained Vue 3 components for a multi-tenant Nuxt 3 dashboard application.
+  - Integrated AWS S3 for media upload and asset storage, with Amplify for CI/CD and hosting.
+  - Connected APIs deployed on AWS EC2 through typed Axios modules, in collaboration with the backend team.
+  - Managed custom domain setup and routing with GCP Cloud DNS.
+  - Created dev and prod environments with seamless deployment flows.
+outcome: |
+  Separate dev and prod environments with automated deployment flows improved delivery speed by
+  about 30%, and the dashboard and website shipped on a shared, documented component base.
+metrics:
+  - label: Delivery speed
+    value: "+30%"
+  - label: Apps
+    value: Dashboard + website
+tags: [dashboard, saas, performance]
+featured: true
+order: 3
+links:
+  source: https://github.com/Seyit47/datacorda-dashboard
+visuals: []
+published: true
+---
+
+## Context
+
+Datacorda is a US analytics startup. I joined as a frontend developer for a five-month
+engagement to build out the customer dashboard and the public site.
+
+## What I built
+
+- A Nuxt 3 dashboard with Vue 3 components, Tailwind, ESLint, Prettier, Husky and commitlint.
+- A Nuxt 3 marketing website sharing the same tooling and design tokens.
+- Media upload to S3, CI/CD and hosting on Amplify, DNS on GCP.
+
+## Decisions
+
+- Nuxt 3 with SSR for both apps so the website is crawlable and the dashboard loads fast.
+- Typed Axios modules per backend service rather than ad-hoc fetch calls.
+- Environment parity between dev and prod so a passing preview means a passing release.
+
+## Result
+
+The team could ship dashboard and website changes independently, with previews before
+production, which cut delivery time by roughly a third.

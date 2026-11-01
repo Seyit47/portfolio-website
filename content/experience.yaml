@@ -1,0 +1,80 @@
+roles:
+  - id: kinestex
+    employer: KinesteX
+    employerUrl: https://kinestex.com
+    role: Software Developer
+    start: 2025-05
+    end: 2026-06
+    location: Dubai, United Arab Emirates
+    remote: true
+    highlights:
+      - Built a data-driven dashboard application with Next.js (App Router) and React, using Server Components for fast initial loads and reusable UI components for tables, cards, and charts.
+      - Developed backend logic inside Next.js using API routes / Server Actions, shaping backend responses to exactly what the frontend needed and reducing unnecessary data transfer.
+      - Set up CI/CD with Vercel, with automatic production deployments on push to main and preview deployments for every pull request, so features could be reviewed on a live URL before release.
+    relatedProjects:
+      - kinestex-dashboard
+  - id: ynamly-belentlik
+    employer: Ynamly Belentlik
+    role: Frontend Developer
+    start: 2022-12
+    end: 2026-06
+    location: Ashgabat, Turkmenistan
+    remote: false
+    highlights:
+      - Worked closely with UX team to meet pixel-perfect UI with Tailwind CSS.
+      - Implemented dark mode and accessibility features.
+      - Built reusable Vue components and page layouts.
+      - Integrated third-party APIs and developed responsive dashboards.
+      - Improved Lighthouse performance score from 68 to 95+ website-wide.
+    relatedProjects: []
+  - id: foreach-partners
+    employer: ForEach Partners
+    employerUrl: https://foreachpartners.com
+    role: Frontend Developer
+    start: 2024-12
+    end: 2025-03
+    location: Remote
+    remote: true
+    highlights:
+      - Translated Figma designs into clean Vue components.
+      - Supported QA team with debugging and testing fixes.
+      - Contributed to feature development and UI fixes.
+    relatedProjects: []
+  - id: datacorda
+    employer: Datacorda
+    role: Frontend Developer
+    start: 2023-06
+    end: 2023-10
+    location: United States
+    remote: true
+    highlights:
+      - Built and maintained Vue 3 components for a multi-tenant Nuxt 3 dashboard application.
+      - Integrated AWS S3 for media upload and asset storage, with Amplify for CI/CD and hosting.
+      - Collaborated with backend team deploying APIs on AWS EC2 and connecting them via Axios modules.
+      - Managed custom domain setup and routing using GCP Cloud DNS.
+      - Created dev/prod environments with seamless deployment flows, improving delivery speed by 30%.
+    relatedProjects:
+      - datacorda
+  - id: belli-creative
+    employer: Belli Creative
+    role: Frontend Developer
+    start: 2020-06
+    end: 2022-11
+    location: Ashgabat, Turkmenistan
+    remote: false
+    highlights:
+      - Built a dynamic CV maker using Nuxt 3 with live form-driven data rendering and PDF export support.
+      - Created a badge generator app allowing users to design and download SVG/PNG name badges.
+      - Developed customizable, CMS-free dynamic landing page templates for startups using Vue + Tailwind.
+      - Designed modular Vue 3 components and incorporated Nuxt 3 with SSR as well as SEO in mind.
+      - Refactored legacy Vue 2 applications to Vue 3 based on Composition API and Pinia.
+      - Managed the performance optimization project, reducing TTI by 40%.
+    relatedProjects:
+      - belli-creative-tools
+education:
+  - institution: Institute of Telecommunications and Informatics of Turkmenistan
+    degree: Engineer's degree
+    field: Information Security Engineering
+    start: 2021-09
+    end: 2026-06
+    location: Ashgabat, Turkmenistan

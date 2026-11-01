@@ -1,0 +1,52 @@
+---
+title: KinesteX Health Dashboard
+year: 2025
+type: Data dashboard
+summary: Data-driven dashboard for an AI personal-trainer platform, server-rendered for fast loads with backend logic colocated beside the UI.
+role: Software Developer
+period: May 2025 - Jun 2026
+employer: kinestex
+problem: |
+  KinesteX, an AI personal trainer for digital health platforms, needed a dashboard that loads
+  fast on first visit, presents dense data clearly and can evolve quickly without a separate
+  backend team for every change.
+solution: |
+  A Next.js App Router application using Server Components for the initial render, reusable
+  table, card and chart components, and backend logic in API routes and Server Actions that
+  return exactly the data each view needs.
+highlights:
+  - Server Components for fast initial loads of data-heavy screens.
+  - Reusable table, card and chart components shared across the dashboard.
+  - API routes and Server Actions shaping responses to the UI, reducing transfer size.
+  - Vercel CI/CD with production deploys on push to main and preview deploys per pull request.
+outcome: |
+  Features could be reviewed on a live preview URL before release, and views received only the
+  data they rendered, keeping the dashboard quick on real devices.
+metrics:
+  - label: Review flow
+    value: Preview URL per PR
+tags: [dashboard, saas, full-stack]
+featured: false
+visuals: []
+published: true
+---
+
+## Context
+
+A year-long engagement with a Dubai health-tech company building an AI personal trainer.
+
+## What I built
+
+The data dashboard: server-rendered pages, a component kit for tables, cards and charts, and
+the backend logic that feeds them, all inside one Next.js application.
+
+## Decisions
+
+- Server Components for the first paint, client components only where interaction needs them.
+- Backend responses shaped per view so the client never over-fetches.
+- Preview deployments as the review mechanism, which removed the "works on my machine" step.
+
+## Result
+
+A fast, maintainable dashboard with a review loop that fits a small team. The code belongs to
+the company, so there is no public repository to link.

@@ -1,0 +1,223 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-fg-subtle: var(--color-fg-subtle);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-fg: var(--color-accent-fg);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-success: var(--color-success);
+  --color-danger: var(--color-danger);
+  --color-focus: var(--color-focus);
+
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --text-3xl: var(--text-3xl);
+  --text-4xl: var(--text-4xl);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --ease-standard: var(--ease-standard);
+  --ease-emphasized: var(--ease-emphasized);
+  --ease-out: var(--ease-out);
+
+  --spacing-gutter: var(--gutter);
+  --container-content: var(--content-max);
+  --container-prose: var(--prose-max);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0s !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-fg);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display), var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-tight);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@utility container-content {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@utility hero-gradient {
+  background:
+    radial-gradient(60% 50% at 20% 20%, var(--color-hero-a) 0%, transparent 70%),
+    radial-gradient(50% 60% at 85% 30%, var(--color-hero-c) 0%, transparent 70%),
+    linear-gradient(180deg, var(--color-hero-b) 0%, var(--color-bg) 100%);
+}
+
+/* Hero intro: server-rendered text reveals line by line; zeroed under reduced motion. */
+/* Starts visible (opacity 0.3) so the heading is painted immediately and counts as LCP on arrival. */
+@keyframes hero-in {
+  from {
+    opacity: 0.3;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-intro > [data-hero-line] {
+  animation: hero-in var(--motion-slow) var(--ease-out) both;
+}
+.hero-intro > [data-hero-line]:nth-child(2) {
+  animation-delay: 90ms;
+}
+.hero-intro > [data-hero-line]:nth-child(3) {
+  animation-delay: 180ms;
+}
+.hero-intro > [data-hero-line]:nth-child(4) {
+  animation-delay: 270ms;
+}
+.hero-intro > [data-hero-line]:nth-child(5) {
+  animation-delay: 360ms;
+}
+.hero-intro > [data-hero-line]:nth-child(6) {
+  animation-delay: 450ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-intro > [data-hero-line] {
+    animation: none;
+  }
+}
+
+/* Scroll reveals: hidden start state only when JavaScript is running (html.js). */
+html.js [data-reveal="out"] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+/* Content already on screen when the page loads is shown without a transition. */
+html.js [data-reveal="in"][data-reveal-instant] {
+  transition: none;
+}
+html.js [data-reveal] {
+  transition:
+    opacity var(--motion-slow) var(--ease-out),
+    transform var(--motion-slow) var(--ease-out);
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+}
+html.js [data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Page enter animation; template.tsx remounts the wrapper on every navigation. */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Only after a client-side navigation (html.navigated); the first paint is never delayed. */
+html.navigated .page-enter {
+  animation: page-in var(--motion-base) var(--ease-standard) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .page-enter {
+    animation: none;
+  }
+}

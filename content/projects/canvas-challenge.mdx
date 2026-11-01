@@ -1,0 +1,49 @@
+---
+title: Canvas Challenge
+year: 2026
+type: Interactive canvas
+summary: Node-based canvas editor with multiple workspaces remembered in the URL and locally, backed by a unified request and error layer.
+role: Front-end developer
+period: "2026"
+problem: |
+  A take-home challenge asked for a node-and-edge canvas over a provided API with multiple
+  spaces, persistence and resilient error handling, judged on code structure as much as on the
+  result.
+solution: |
+  React 19 with React Flow, Zustand and Vite. The open space lives in the URL and the last one in
+  local storage, so a reload restores the same view. All API calls go through one request
+  pipeline with a single error type that knows whether a retry makes sense.
+highlights:
+  - React Flow canvas with Zustand state and typed API modules.
+  - Workspace persisted in the URL (`?space=<id>`) and local storage.
+  - Shared request pipeline (prepare, send, parse) and a unified `ApiError` with retry hints and user-facing text.
+  - Vitest unit tests and a documented architecture in the README.
+outcome: |
+  A clean, testable canvas application whose structure was explained well enough to be
+  reviewed from the README alone.
+tags: [canvas, tooling]
+featured: false
+links:
+  source: https://github.com/Seyit47/frontend-canvas-challenge
+visuals: []
+published: true
+---
+
+## Context
+
+Front-end challenge with a fixed backend. The interesting part was keeping the editor
+predictable while the API could fail or be slow.
+
+## What I built
+
+The `apps/web` workspace: canvas, space switcher, persistence and the `api/` layer with
+`http.ts` and `errors.ts`.
+
+## Decisions
+
+- One request pipeline so every call gets the same preparation, parsing and error shape.
+- Persist to the URL first (shareable), local storage second (convenient).
+
+## Result
+
+A canvas that survives reloads and API hiccups, with the reasoning written down.

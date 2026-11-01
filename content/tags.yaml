@@ -1,0 +1,31 @@
+tags:
+  - slug: dashboard
+    label: Dashboard
+    description: Data-dense admin and analytics interfaces.
+  - slug: full-stack
+    label: Full-stack
+    description: Front-end plus API, database or deployment work.
+  - slug: mobile
+    label: Mobile
+    description: Mobile apps or mobile-first web experiences.
+  - slug: performance
+    label: Performance
+    description: Measurable speed and Core Web Vitals improvements.
+  - slug: e-commerce
+    label: E-commerce
+    description: Checkout, catalogue and order flows.
+  - slug: canvas
+    label: Canvas
+    description: Node-based editors and interactive canvases.
+  - slug: media
+    label: Media
+    description: Video, image and asset-heavy experiences.
+  - slug: saas
+    label: SaaS
+    description: Multi-tenant products and marketing sites.
+  - slug: tooling
+    label: Tooling
+    description: Developer tools, dashboards for process and internal utilities.
+  - slug: design-to-code
+    label: Design-to-code
+    description: Pixel-perfect implementation from Figma.

@@ -1,0 +1,48 @@
+---
+title: MAX Web Chat
+year: 2026
+type: Browser client
+summary: Backend-less browser chat client for the MAX messenger that talks directly to the GREEN-API and uses the messenger's own UI kit.
+role: Front-end developer
+period: "2026"
+problem: |
+  Sending and receiving MAX messenger texts from a browser required either a server in the
+  middle or the official app. The task was a client that needs neither.
+solution: |
+  A React, TypeScript and Vite application that signs in with GREEN-API instance credentials,
+  polls for incoming notifications and sends text messages, all directly from the browser, using
+  the MAX UI component library for a native look.
+highlights:
+  - No backend; the browser calls GREEN-API directly with the user's instance credentials.
+  - Built with the official MAX UI component library for a consistent messenger look.
+  - Unit tests, ESLint and a type-checked production build.
+outcome: |
+  A deployable chat client that works with any authorised GREEN-API instance, with no
+  infrastructure to run.
+tags: [tooling]
+featured: false
+links:
+  live: https://max-app-six.vercel.app
+  source: https://github.com/Seyit47/max-app
+visuals: []
+published: true
+---
+
+## Context
+
+GREEN-API exposes the MAX messenger over HTTP. The question was whether a complete client
+could live entirely in the browser.
+
+## What I built
+
+Sign-in with `idInstance`, `apiTokenInstance` and `apiUrl`, a conversation view, message
+sending, and notification polling, built with React 19, Vite and `@maxhub/max-ui`.
+
+## Decisions
+
+- Direct browser-to-API calls keep the deployment to a static host.
+- The official UI kit avoids re-creating messenger components.
+
+## Result
+
+A static site on Vercel that acts as a working MAX chat client.

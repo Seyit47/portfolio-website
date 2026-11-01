@@ -1,0 +1,50 @@
+name: Seyit Geldiyev
+alternateNames:
+  - Seyitmyrat Geldiyew
+title: Middle+ Software Engineer
+tagline: I build fast, accessible dashboards and SaaS front-ends that ship on time and score 95+ on Lighthouse.
+summary: |
+  Six years of shipping production front-ends for health-tech, analytics and creative-agency
+  clients across Turkmenistan, the UAE and the US. I turn Figma files into pixel-perfect,
+  accessible interfaces, wire them to real APIs, and keep them fast: Lighthouse from 68 to 95+,
+  time-to-interactive cut by 40%.
+
+  Lately I work full-stack in Next.js with server components and server actions, automate
+  delivery on Vercel, and practise specification-driven development with AI-assisted tooling.
+location:
+  city: Ashgabat
+  country: Turkmenistan
+availability:
+  status: open
+  label: Open to new opportunities
+email: seyitbu1111@gmail.com
+links:
+  github: https://github.com/Seyit47
+  linkedin: https://www.linkedin.com/in/seyitgeldiyev-55a17b230
+resume:
+  path: /resume.pdf
+  filename: Seyit-Geldiyev-Resume.pdf
+languages:
+  - name: Turkmen
+    level: Native
+  - name: Turkish
+    level: Full professional
+  - name: English
+    level: Professional (C2 certified)
+  - name: Russian
+    level: Professional
+certifications:
+  - name: JavaScript Algorithms and Data Structures
+    issuer: freeCodeCamp
+  - name: JavaScript (Intermediate) Certificate
+    issuer: HackerRank
+  - name: CSS Certificate
+    issuer: HackerRank
+  - name: Introduction to Cybersecurity
+    issuer: Cisco
+  - name: EF SET English Certificate 71/100 (C2 Proficient)
+    issuer: EF
+seo:
+  siteName: Seyit Geldiyev
+  defaultDescription: Portfolio of Seyit Geldiyev, a Middle+ software engineer building fast, accessible dashboards and SaaS front-ends with Next.js, React and Vue.
+  ogImageAlt: Seyit Geldiyev, Middle+ Software Engineer

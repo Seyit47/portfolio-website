@@ -1,0 +1,46 @@
+---
+title: Checkout Challenge
+year: 2026
+type: E-commerce flow
+summary: Store checkout flow built against a provided API with documented integration notes, evaluation criteria and unit-tested form logic.
+role: Front-end developer
+period: "2026"
+problem: |
+  A store API and Swagger spec were provided; the task was a complete checkout front-end with
+  correct API usage, validation and a production build, with the reasoning documented.
+solution: |
+  React 19, TypeScript, Vite, TanStack Query and React Router in an `apps/web` workspace, with
+  integration notes, assignment and evaluation documents kept beside the code.
+highlights:
+  - Checkout flow with server-state caching via TanStack Query.
+  - Form validation and error handling aligned with the API's documented responses.
+  - Vitest unit tests for form logic and a type-checked Vite production build.
+  - Integration, assignment and evaluation notes in `docs/`.
+outcome: |
+  A reviewable, documented checkout implementation that runs with `npm ci` and two dev
+  commands, no database or external keys needed.
+tags: [e-commerce]
+featured: false
+links:
+  source: https://github.com/Seyit47/frontend-checkout-challenge
+visuals: []
+published: true
+---
+
+## Context
+
+A take-home assignment with a fixed backend and explicit evaluation criteria.
+
+## What I built
+
+The `@checkout/web` workspace: catalogue, cart and checkout with TanStack Query for server
+state and React Router for navigation.
+
+## Decisions
+
+- Keep the backend untouched and document every integration choice in `docs/INTEGRATION.md`.
+- Validate on the client for feedback and trust the API's responses for truth.
+
+## Result
+
+A checkout that meets the published criteria and explains itself.

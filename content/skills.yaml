@@ -1,0 +1,77 @@
+groups:
+  - id: frameworks
+    name: Front-end frameworks & server rendering
+    order: 1
+    skills:
+      - { name: Next.js (App Router), level: primary, tags: [dashboard, full-stack] }
+      - { name: React, level: primary, tags: [dashboard] }
+      - { name: Vue 3, level: primary, tags: [dashboard] }
+      - { name: Nuxt 3, level: primary, tags: [saas] }
+      - { name: TypeScript, level: primary }
+      - { name: Flutter, level: familiar, tags: [mobile] }
+  - id: ui
+    name: Component systems & styling
+    order: 2
+    skills:
+      - { name: Tailwind CSS, level: primary, tags: [design-to-code] }
+      - { name: Design systems & reusable components, level: primary, tags: [design-to-code] }
+      - { name: Accessibility (WCAG), level: working }
+      - { name: Dark mode & theming, level: working }
+      - { name: Motion & animation, level: working }
+  - id: data
+    name: State & data fetching
+    order: 3
+    skills:
+      - { name: TanStack Query, level: working }
+      - { name: Pinia, level: working }
+      - { name: Zustand, level: working, tags: [canvas] }
+      - { name: Axios / fetch modules, level: primary }
+      - { name: React Flow, level: working, tags: [canvas] }
+  - id: backend
+    name: Backend-in-frontend APIs
+    order: 4
+    skills:
+      - { name: Server Components & Server Actions, level: primary, tags: [full-stack] }
+      - { name: API routes & route handlers, level: primary, tags: [full-stack] }
+      - { name: Node.js, level: working }
+      - { name: Fastify & Prisma, level: working, tags: [full-stack] }
+      - { name: PostgreSQL, level: familiar }
+  - id: cloud
+    name: Cloud, CI/CD & hosting
+    order: 5
+    skills:
+      - { name: Vercel (preview & production deploys), level: primary }
+      - { name: GitHub Actions, level: working }
+      - { name: AWS S3 / EC2 / Amplify, level: working }
+      - { name: GCP Cloud DNS, level: familiar }
+      - { name: Netlify & Render, level: working }
+  - id: ops
+    name: Containers & server administration
+    order: 6
+    skills:
+      - { name: Docker & docker compose, level: working }
+      - { name: Linux server administration, level: working }
+      - { name: S3-compatible storage (SeaweedFS), level: familiar }
+  - id: scripting
+    name: Scripting languages
+    order: 7
+    skills:
+      - { name: JavaScript (ES2023+), level: primary }
+      - { name: Python, level: working }
+      - { name: Dart, level: familiar, tags: [mobile] }
+      - { name: Bash, level: working }
+  - id: design
+    name: Design-to-code workflow
+    order: 8
+    skills:
+      - { name: Figma to pixel-perfect UI, level: primary, tags: [design-to-code] }
+      - { name: Responsive & mobile-first layout, level: primary }
+      - { name: Performance optimisation (Lighthouse, TTI), level: primary, tags: [performance] }
+      - { name: SEO & SSR, level: working }
+  - id: ai
+    name: AI-assisted & spec-driven development
+    order: 9
+    skills:
+      - { name: Specification-driven development (Spec Kit), level: primary, tags: [tooling] }
+      - { name: Claude Code & agentic workflows, level: primary, tags: [tooling] }
+      - { name: Test-first delivery (Vitest, Playwright), level: working }

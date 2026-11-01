@@ -1,0 +1,55 @@
+---
+title: Instant Play Video Navigator
+year: 2025
+type: Media app
+summary: Mobile-first video experience that preloads clips with visible progress so playback starts instantly when the viewer taps play.
+role: Front-end developer
+period: "2025"
+problem: |
+  Video-first landing experiences stall on mobile: the viewer taps play and waits while the
+  file buffers. The goal was playback that feels instant without shipping a heavy player.
+solution: |
+  A React Router application that preloads the video set on the landing screen with a visible
+  progress indicator, caches the files through a service worker, and hands off to a player page
+  that starts immediately.
+highlights:
+  - Efficient video preloading with per-file progress tracking surfaced in the UI.
+  - Service worker caching so repeat visits play without re-downloading.
+  - Context-based global state for video readiness shared between landing and player pages.
+  - Mobile-first responsive layout with Tailwind CSS.
+  - Dockerfile and Netlify configuration for two deployment paths.
+outcome: |
+  Playback begins instantly once preloading finishes, and repeat visits skip the download
+  entirely thanks to the service worker cache.
+metrics:
+  - label: Playback start
+    value: Instant after preload
+tags: [media, performance, mobile]
+featured: true
+order: 4
+links:
+  source: https://github.com/Seyit47/instant-play-video-navigator
+visuals: []
+published: true
+---
+
+## Context
+
+A small, focused product question: can a web page make video feel as immediate as a native
+app on a phone?
+
+## What I built
+
+A TypeScript React application with React Router, a `VideoContext` that owns loading state and
+progress, a landing page that preloads, and a player page that plays. A service worker
+(`video-sw.js`) caches the media.
+
+## Decisions
+
+- Preload on the landing screen where the viewer is reading anyway, and show honest progress.
+- Keep the player tiny; the win comes from caching, not from a feature-rich player.
+- Ship Docker and Netlify configs so the app can be hosted either way.
+
+## Result
+
+A demo-ready pattern for instant video on mobile that can be lifted into larger products.
