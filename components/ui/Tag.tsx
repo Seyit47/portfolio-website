@@ -26,6 +26,7 @@ export function Tag({ slug, label, active = false, asLink = true, className }: T
   return (
     <Link
       href={`/projects/tag/${slug}`}
+      scroll={false}
       className={classes}
       aria-current={active ? "page" : undefined}
     >

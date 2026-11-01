@@ -211,13 +211,93 @@ html.navigated .page-enter {
   animation: page-in var(--motion-base) var(--ease-standard) both;
 }
 
+/* Theme switch: colours cross-fade while html.theme-switching is set (see theme-transition.ts). */
+html.theme-switching,
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition:
+    background-color var(--motion-base) var(--ease-standard),
+    color var(--motion-base) var(--ease-standard),
+    border-color var(--motion-base) var(--ease-standard),
+    fill var(--motion-base) var(--ease-standard),
+    stroke var(--motion-base) var(--ease-standard),
+    box-shadow var(--motion-base) var(--ease-standard);
+}
+
+/* Command palette: overlay fades, panel scales in; Radix keeps the nodes until the exit ends. */
+@keyframes palette-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes palette-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes palette-content-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+@keyframes palette-content-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -8px) scale(0.98);
+  }
+}
+.palette-overlay[data-state="open"] {
+  animation: palette-overlay-in var(--motion-base) var(--ease-out) both;
+}
+.palette-overlay[data-state="closed"] {
+  animation: palette-overlay-out var(--motion-fast) var(--ease-standard) both;
+}
+.palette-content[data-state="open"] {
+  animation: palette-content-in var(--motion-base) var(--ease-out) both;
+}
+.palette-content[data-state="closed"] {
+  animation: palette-content-out var(--motion-fast) var(--ease-standard) both;
+}
+
+/* Disclosure panels: height animates open and closed in browsers that can size `auto`. */
+@supports (block-size: calc-size(auto, size)) {
+  details.details-animated::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size var(--motion-base) var(--ease-standard),
+      content-visibility var(--motion-base) allow-discrete;
+  }
+  details.details-animated[open]::details-content {
+    block-size: calc-size(auto, size);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.js [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .page-enter {
+  .page-enter,
+  .palette-overlay,
+  .palette-content {
     animation: none;
   }
 }

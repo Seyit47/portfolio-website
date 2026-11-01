@@ -1,33 +1,37 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { sameTransitionGroup } from "@/lib/utils/routes";
+import { playFlip, snapshotFlip } from "./flip";
 
 declare global {
   interface Window {
-    __revealScan?: () => void;
+    __revealScan?: (animate?: boolean) => void;
   }
 }
 
 /**
- * Client-side navigation effects:
- * - re-runs the inline reveal bootstrap after each route change and marks
- *   `html.navigated` so the page-enter animation only plays on navigations;
- * - scrolls to the top as soon as an internal link is activated, so the route
- *   swap happens with the viewport already at the top instead of the footer
- *   jumping into view while the previous scroll offset is still applied.
+ * Re-runs the inline reveal scan after client-side navigations and keeps navigation
+ * feeling stable: links to another section scroll to the top before the new page commits
+ * (so the footer never jumps into view mid-swap), while links inside the same transition
+ * group (project filters) keep the scroll position and animate the list in place.
  */
 export function RevealObserver() {
   const pathname = usePathname();
-  const first = useRef(true);
+  const previous = useRef(pathname);
 
-  useEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
-    document.documentElement.classList.add("navigated");
-    window.__revealScan?.();
+  // Layout effect: the FLIP animation and reveal states must be applied before the new DOM is
+  // painted, otherwise the first frame shows content at its final position and then jumps back.
+  useLayoutEffect(() => {
+    if (previous.current === pathname) return;
+    const inPlace = sameTransitionGroup(previous.current, pathname);
+    previous.current = pathname;
+    // In-place updates slide surviving items to their new place and fade new ones in with the
+    // stagger; section changes show above-the-fold content immediately so the page-enter
+    // animation is the only motion.
+    if (inPlace) playFlip();
+    window.__revealScan?.(inPlace);
   }, [pathname]);
 
   useEffect(() => {
@@ -40,6 +44,10 @@ export function RevealObserver() {
       const href = anchor.getAttribute("href") ?? "";
       if (!href.startsWith("/") || href.startsWith("//") || href.includes("#")) return;
       if (href === window.location.pathname) return;
+      if (sameTransitionGroup(href, window.location.pathname)) {
+        snapshotFlip();
+        return;
+      }
       window.scrollTo({ top: 0, behavior: "instant" });
     }
     document.addEventListener("click", onClick, { capture: true });

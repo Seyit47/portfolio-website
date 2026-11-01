@@ -32,3 +32,20 @@ describe("TagFilter", () => {
     expect(screen.getByRole("status")).toHaveTextContent(/"nope" was not recognised/);
   });
 });
+
+describe("TagFilter status line", () => {
+  it("always renders the status element so the grid never moves", () => {
+    render(<TagFilter tags={getTags()} />);
+    expect(screen.getByRole("status")).toBeInTheDocument();
+  });
+
+  it("reports the filtered count for an active tag", () => {
+    render(<TagFilter tags={getTags()} active="dashboard" count={4} total={9} />);
+    expect(screen.getByRole("status")).toHaveTextContent("4 of 9 projects tagged Dashboard.");
+  });
+
+  it("reports the total when nothing is selected", () => {
+    render(<TagFilter tags={getTags()} count={9} total={9} />);
+    expect(screen.getByRole("status")).toHaveTextContent("Showing all 9 projects.");
+  });
+});

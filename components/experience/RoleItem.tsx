@@ -30,7 +30,7 @@ export function RoleItem({
       />
       <details
         open={defaultOpen}
-        className="group rounded-lg border border-border bg-bg-elevated shadow-sm open:border-border-strong"
+        className="group details-animated rounded-lg border border-border bg-bg-elevated shadow-sm open:border-border-strong"
       >
         <summary className="flex cursor-pointer list-none flex-col gap-1 p-5 [&::-webkit-details-marker]:hidden">
           <span className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">

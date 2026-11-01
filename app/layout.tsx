@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { VercelAnalytics } from "@/components/layout/VercelAnalytics";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { REVEAL_INLINE_SCRIPT } from "@/components/motion/reveal-inline";
+import { PageTransition } from "@/components/motion/PageTransition";
 import { RevealObserver } from "@/components/motion/RevealObserver";
 import { PaletteProvider } from "@/components/palette/PaletteContext";
 import { PaletteHost } from "@/components/palette/PaletteHost";
@@ -83,7 +84,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               }
             />
             <main id="main" tabIndex={-1} className="min-h-[calc(100svh-4rem)] flex-1 outline-none">
-              {children}
+              <PageTransition>{children}</PageTransition>
             </main>
             <Footer profile={profile} />
             <PaletteHost />

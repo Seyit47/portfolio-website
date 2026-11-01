@@ -21,6 +21,7 @@
 - [x] VAL011 a11y spec reports zero serious/critical axe violations in light and dark — 7 routes x 2 themes
 - [x] VAL012 visual snapshots captured and reviewed at 360 and 1440 — 10 snapshots (home, projects, project, experience, contact)
 - [x] VAL018 Home-page JavaScript budget — 139.9 KB compressed across 8 scripts (`node scripts/measure-bundle.mjs`), limit 150 KB
+- [x] VAL019 Motion and layout stability (`tests/e2e/motion.spec.ts`, 5 scenarios x 2 viewports): filtering projects keeps scroll position and filter-bar position frame by frame, survivors slide and newcomers stagger in, theme switch runs a real background transition, palette animates open and closed, role panels animate height — passed 8 repeated runs on 2026-11-02; per-frame probe shows no single-frame jumps on filter, theme, palette, pager or role actions at 360 and 1440
 - [x] VAL013 Lighthouse CI: all four categories >= 0.95 on five routes, script budget on `/` <= 150 KB — 15 runs, 0 failed assertions: performance 97, accessibility 100, best-practices 100, SEO 100 on every route; home scripts 148 KiB transfer; simulated-mobile LCP 2.5-2.7 s (borderline against the 2.5 s field target, see Notes)
 
 ## Manual (requires the owner's devices and accounts)

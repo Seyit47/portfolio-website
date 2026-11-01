@@ -7,19 +7,32 @@ type TagFilterProps = {
   active?: string;
   /** True when `active` is not a known tag; renders an unobtrusive note. */
   unknown?: boolean;
+  /** Number of projects currently shown and the total; rendered in a reserved status line. */
+  count?: number;
+  total?: number;
 };
 
 const pill =
   "inline-flex min-h-9 items-center rounded-full border px-3 text-sm font-medium transition-colors duration-(--motion-fast)";
 
-export function TagFilter({ tags, active, unknown = false }: TagFilterProps) {
+export function TagFilter({ tags, active, unknown = false, count, total }: TagFilterProps) {
   const allActive = !active || unknown;
+  const activeTag = tags.find((tag) => tag.slug === active);
+  let status: string | null = null;
+  if (unknown && active) {
+    status = `Filter "${active}" was not recognised, so all projects are shown.`;
+  } else if (activeTag && count !== undefined) {
+    status = `${count} of ${total ?? count} projects tagged ${activeTag.label}.`;
+  } else if (count !== undefined) {
+    status = `Showing all ${count} projects.`;
+  }
   return (
     <nav aria-label="Filter by tag" className="flex flex-col gap-3">
       <ul className="flex flex-wrap gap-2">
         <li>
           <Link
             href="/projects"
+            scroll={false}
             aria-current={allActive ? "page" : undefined}
             className={cn(
               pill,
@@ -37,6 +50,7 @@ export function TagFilter({ tags, active, unknown = false }: TagFilterProps) {
             <li key={tag.slug}>
               <Link
                 href={`/projects/tag/${tag.slug}`}
+                scroll={false}
                 aria-current={isActive ? "page" : undefined}
                 title={tag.description}
                 className={cn(
@@ -52,11 +66,10 @@ export function TagFilter({ tags, active, unknown = false }: TagFilterProps) {
           );
         })}
       </ul>
-      {unknown && active && (
-        <p role="status" className="text-sm text-fg-subtle">
-          Filter &quot;{active}&quot; was not recognised, so all projects are shown.
-        </p>
-      )}
+      {/* Reserved height so the grid below never moves when the filter changes. */}
+      <p role="status" className="min-h-5 text-sm text-fg-subtle" data-testid="filter-status">
+        {status}
+      </p>
     </nav>
   );
 }

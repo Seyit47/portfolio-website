@@ -27,6 +27,9 @@ test.describe("US2 project case studies", () => {
     const count = await cards.count();
     expect(count).toBeGreaterThan(0);
     expect(count).toBeLessThan(9);
+    await expect(page.getByTestId("filter-status")).toHaveText(
+      `${count} of 9 projects tagged Dashboard.`,
+    );
     for (let i = 0; i < count; i += 1) {
       await expect(
         cards

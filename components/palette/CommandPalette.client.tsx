@@ -47,8 +47,8 @@ export default function CommandPalette() {
         }
       }}
       label="Command palette"
-      overlayClassName="fixed inset-0 z-50 bg-fg/40 backdrop-blur-sm"
-      contentClassName="fixed top-[12vh] left-1/2 z-50 w-[min(40rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-lg border border-border bg-bg-elevated shadow-lg"
+      overlayClassName="palette-overlay fixed inset-0 z-50 bg-fg/40 backdrop-blur-sm"
+      contentClassName="palette-content fixed top-[12vh] left-1/2 z-50 w-[min(40rem,calc(100vw-2rem))] -translate-x-1/2 overflow-hidden rounded-lg border border-border bg-bg-elevated shadow-lg"
       loop
     >
       <div className="border-b border-border px-3">

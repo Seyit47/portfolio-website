@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
+import { withThemeTransition } from "./theme-transition";
 
 const ORDER = ["system", "light", "dark"] as const;
 type Theme = (typeof ORDER)[number];
@@ -25,7 +26,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      onClick={() => setTheme(next)}
+      onClick={() => withThemeTransition(() => setTheme(next))}
       aria-label={`Theme: ${LABEL[current]}, switch to ${LABEL[next]}`}
       title={`Theme: ${LABEL[current]}`}
       data-theme-state={current}
