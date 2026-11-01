@@ -82,7 +82,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 </>
               }
             />
-            <main id="main" tabIndex={-1} className="flex-1 outline-none">
+            <main id="main" tabIndex={-1} className="min-h-[calc(100svh-4rem)] flex-1 outline-none">
               {children}
             </main>
             <Footer profile={profile} />

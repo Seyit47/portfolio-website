@@ -34,6 +34,7 @@ test.describe("US5 signature experience", () => {
     page,
   }, testInfo) => {
     await page.goto("/projects");
+    await page.locator("html[data-palette-ready]").waitFor({ state: "attached" });
     await page.keyboard.press("Control+k");
     const dialog = page.getByRole("dialog", { name: "Command palette" });
     await expect(dialog).toBeVisible();
@@ -56,6 +57,7 @@ test.describe("US5 signature experience", () => {
 
   test("palette lists pages, projects and external links", async ({ page }) => {
     await page.goto("/");
+    await page.locator("html[data-palette-ready]").waitFor({ state: "attached" });
     await page.getByRole("button", { name: "Open command palette" }).click();
     const dialog = page.getByRole("dialog", { name: "Command palette" });
     await expect(dialog.getByRole("group", { name: "Pages" })).toBeVisible();

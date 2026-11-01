@@ -37,6 +37,8 @@ export default function CommandPalette() {
     <Command.Dialog
       open={open}
       onOpenChange={(next) => {
+        // A dismiss event from a dialog that is already closing must not cancel a fresh open.
+        if (next === open) return;
         setOpen(next);
         if (!next) {
           setQuery("");

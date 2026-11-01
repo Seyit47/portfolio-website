@@ -168,7 +168,13 @@ export function ContactForm({ action, renderedAt, email }: ContactFormProps) {
       <input type="hidden" name="renderedAt" value={renderedAt} />
 
       <div>
-        <Button type="submit" size="lg" disabled={pending} aria-busy={pending || undefined}>
+        <Button
+          type="submit"
+          size="lg"
+          disabled={pending}
+          aria-busy={pending || undefined}
+          className="min-w-44"
+        >
           {pending ? "Sending..." : "Send message"}
         </Button>
       </div>
@@ -193,11 +199,14 @@ function Field({
         {label}
       </label>
       {children}
-      {error && (
-        <p id={`${id}-error`} className="mt-1.5 text-sm text-danger" data-testid="field-error">
-          {error}
-        </p>
-      )}
+      {/* Always rendered so an error message never pushes the fields below it. */}
+      <p
+        id={`${id}-error`}
+        className="mt-1.5 min-h-5 text-sm text-danger"
+        data-testid={error ? "field-error" : undefined}
+      >
+        {error}
+      </p>
     </div>
   );
 }

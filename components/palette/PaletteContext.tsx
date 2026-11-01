@@ -41,7 +41,12 @@ export function PaletteProvider({
       }
     }
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    // Signals that the shortcut and trigger are live (used by tests to avoid pre-hydration input).
+    document.documentElement.setAttribute("data-palette-ready", "");
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.documentElement.removeAttribute("data-palette-ready");
+    };
   }, [toggle]);
 
   const value = useMemo(
