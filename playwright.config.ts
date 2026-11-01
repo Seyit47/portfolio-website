@@ -26,7 +26,7 @@ export default defineConfig({
       use: {
         ...devices["Pixel 7"],
         viewport: { width: 360, height: 740 },
-        channel: process.env.CI ? undefined : "chrome",
+        channel: "chrome",
       },
     },
     {
@@ -34,7 +34,7 @@ export default defineConfig({
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1440, height: 900 },
-        channel: process.env.CI ? undefined : "chrome",
+        channel: "chrome",
       },
     },
   ],

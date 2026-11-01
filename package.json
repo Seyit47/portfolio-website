@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "pnpm build:content && tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -21,7 +21,8 @@
     "lhci": "pnpm dlx @lhci/cli@0.15.1 autorun",
     "check:resume": "tsx scripts/check-resume.ts",
     "ci": "pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm check:resume && pnpm e2e && pnpm lhci",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build:content": "tsx scripts/build-content.mts"
   },
   "dependencies": {
     "@content-collections/core": "^0.15.3",

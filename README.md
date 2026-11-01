@@ -28,8 +28,8 @@ constitution and feature documents live under `.specify/` and `specs/`.
 | `pnpm check:resume`         | asserts `content/experience.yaml` matches `public/resume.pdf` (needs `pdftotext`)             |
 | `pnpm ci`                   | everything above in order                                                                     |
 
-Node 24 (`.nvmrc`) and pnpm 12. Playwright uses the locally installed Chrome outside CI
-(`channel: "chrome"`); CI installs Chromium.
+Node 24 (`.nvmrc`) and pnpm 12. Playwright and Lighthouse use Google Chrome stable everywhere
+(`channel: "chrome"`); CI installs it with `playwright install --with-deps chrome`.
 
 ## Content workflow
 

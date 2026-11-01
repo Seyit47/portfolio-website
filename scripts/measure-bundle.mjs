@@ -7,7 +7,7 @@ import { chromium } from "@playwright/test";
 
 const base = process.argv[2] ?? "http://localhost:3100";
 const path = process.argv[3] ?? "/";
-const browser = await chromium.launch({ channel: process.env.CI ? undefined : "chrome" });
+const browser = await chromium.launch({ channel: "chrome" });
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 const rows = [];
 page.on("response", async (res) => {
